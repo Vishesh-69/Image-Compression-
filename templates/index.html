@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Compression App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Image Compression App</h1>
+        <form action="/" method="POST" enctype="multipart/form-data">
+            <input type="file" name="image" accept="image/*" required>
+            <button type="submit">Compress</button>
+        </form>
+        {% if compressed_image %}
+        <div class="result">
+            <h2>Compressed Image</h2>
+            <img src="{{ compressed_image }}" alt="Compressed Image">
+            <a href="/download_compressed" class="download-btn">Download Compressed Image</a>
+        </div>
+        {% endif %}
+        {% if message %}
+        <p>{{ message }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
